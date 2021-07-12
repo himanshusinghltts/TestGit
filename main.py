@@ -5,5 +5,5 @@ def main():
     input()
     print("I hope everything will go fine")
     input()
-    print("Good Bye susan.....")
+    print("Yes it is working fine.")
 if __name__ == "__main__":main()
