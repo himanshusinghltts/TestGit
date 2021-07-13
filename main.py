@@ -7,5 +7,5 @@ def main():
     input()
     print("Yes it is working fine.")
     name = input("Enter your name: ")
-    print("hello good"+name)
+    print("hello"+name)
 if __name__ == "__main__":main()
