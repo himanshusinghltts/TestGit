@@ -6,4 +6,6 @@ def main():
     print("I hope everything will go fine")
     input()
     print("Yes it is working fine.")
+    name = input("Enter your name: ")
+    print("hello"+name)
 if __name__ == "__main__":main()
