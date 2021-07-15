@@ -8,4 +8,7 @@ def main():
     print("Yes it is working fine.")
     name = input("Enter your name: ")
     print("hello"+name)
-if __name__ == "__main__":main()
+
+
+if __name__ == "__main__":
+    main()
