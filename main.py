@@ -1,50 +1,36 @@
-from abc import ABC, abstractmethod
-
-
-class SayHello(ABC):
-    """
-    Abstract class """
-
-    @abstractmethod
-    def name(self, myname):
-        """
-        Say Myname
-        :param myname:
-        :return: None
-        """
-        print("Hi "+myname)
-
-
-class SayHelloAgain(SayHello):
-    """
-    Normal class
-    """
-    def name(self, myname):
-        """
-        say my name
-        :param myname:
-        :return: None
-        """
-        print("Hi "+myname)
+import os
+from importxls import ClassData
 
 
 def main():
     """
-    Main class
-    :return: None
+    The main function
+    :return: void
     """
-    #absclas = SayHello()
-    secclass = SayHelloAgain()
-    print("Hello I am Himanshu,")
-    input()
-    print("This is just a test file for the git")
-    input()
-    print("I hope everything will go fine")
-    input()
-    print("Yes it is working fine.")
-    name = input("Enter your name: ")
-    #absclas.name(name)
-    secclass.name(name)
+    filepath = os.getcwd()
+    filepath = filepath+"/Mark_Sheet.xlsx"
+    ClassMarks = ClassData(filepath)
+    MaximumMarksinSDLC(ClassMarks)
+    pass
+
+
+def MaximumMarksinSDLC(ClassMarks):
+    """
+    it prints the name of the person who scored the maximum marks in SDLC module
+    :param ClassMarks: object of ClassData
+    :return: Void
+    """
+    PSnumbers = ClassMarks.listps()
+    name = None
+    maxmarks = 0
+    for i in PSnumbers:
+        currMarks = ClassMarks.getmarksbypsSDLC(i)
+        if currMarks > maxmarks:
+            maxmarks = currMarks
+            name = ClassMarks.getname(i)
+        else:
+            pass
+    print(name+" scored maximum marks in SDLC")
 
 
 if __name__ == "__main__":
