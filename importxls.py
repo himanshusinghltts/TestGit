@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 
 
@@ -12,6 +11,8 @@ class ClassData:
         xlfileone = pd.read_excel(io=filepath, sheet_name="Applied_SDLC")
         self.newfile = pd.merge(xlfileone, xlfiletwo, on=("Emp PS #", "Sl#", "Emp Name"))
         self.newfile = pd.merge(self.newfile, xlfilethree, on=("Emp PS #", "Sl#", "Emp Name"))
+        # self.newfile['Average'] = (self.newfile['Marks_x'] + self.newfile['Marks_y'] + self.newfile['Marks']) / 3
+        # self.newfile.to_excel('Mark_Sheet.xlsx', sheet_name="average", index=False)
         del self.newfile["Sl#"]
 
     def printdata(self):
@@ -111,4 +112,3 @@ class ClassData:
         """
         marks = self.getmarksbyps(psnumber)
         return marks[2]
-
