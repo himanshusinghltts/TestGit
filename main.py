@@ -24,7 +24,7 @@ def main():
     MinimumMarksinMBSE(ClassMarks)
     MinimumMarksinPython(ClassMarks)
     MinimumMarksinSDLC(ClassMarks)
-    # ExpectedMarks(ClassMarks)
+    #MeetingExpectationsinSDLC(ClassMarks)
     pass
 
 
@@ -48,23 +48,21 @@ def MaximumMarksinSDLC(ClassMarks):
     print(name+" scored maximum marks in SDLC")
 
 
-# def ExpectedMarks(ClassMarks):
-#     """
-#     it prints if the student is meeting the required expectations or not
-#     :param ClassMarks: object of ClassData
-#     :return: Void
-#     """
-#     PSnumbers = ClassMarks.listps()
-#     sname=None
-#     Expected=55
-#     for exp in PSnumbers:
-#         TheMarks = ClassMarks.getmarksbyps(exp)
-#         if TheMarks >= Expected:
-#             sname=ClassMarks.getname(exp)
-#         else:
-#             print(sname + "Student is not meeting the required expectations")
-#
-#     print(sname + "Student is meeting the required expectations")
+def MeetingExpectationsinSDLC(ClassMarks):
+    """
+    it prints the name of the person meeting expectations or not in SDLC
+    :param ClassMarks: object of ClassData
+    :return: Void
+    """
+    PSnumbers = ClassMarks.listps()
+    name = None
+    for i in PSnumbers:
+        currMarks = ClassMarks.getmarksbypsSDLC(i)
+        if currMarks > 55:
+            name = ClassMarks.getname(i)
+            print(name + " is meeting expectations in SDLC")
+        else:
+            print(name + " is not meeting expectations in SDLC")
 
 
 def MaximumMarksinPython(ClassMarks):
