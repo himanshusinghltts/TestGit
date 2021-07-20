@@ -1,4 +1,6 @@
-import os
+"""
+Class that imports the XLS file and have methods to access that data
+"""
 import pandas as pd
 
 
@@ -28,7 +30,7 @@ class ClassData:
         mylist = self.newfile["Emp PS #"].values.tolist()
         return mylist
 
-    def getmarksSDLC(self):
+    def getmarks_sdlc(self):
         """
         :return: List of marks scored in SDLC of all candidates
         """
@@ -36,7 +38,7 @@ class ClassData:
         mylist = mylist.values.tolist()
         return mylist
 
-    def getmarksPython(self):
+    def getmarks_python(self):
         """
         :return: List of marks scored in Python of all candidates
         """
@@ -44,7 +46,7 @@ class ClassData:
         mylist = mylist.values.tolist()
         return mylist
 
-    def getmarksMBSE(self):
+    def getmarks_mbse(self):
         """
         :return: List of marks scored in MBSE of all candidates
         """
@@ -59,8 +61,9 @@ class ClassData:
         """
         mylist = self.listps()
         position = None
-        for i in range(0, len(mylist)):
-            if mylist[i] == psnumber:
+        # for i in range(0, len(mylist)):
+        for i, content in enumerate(mylist):
+            if content == psnumber:
                 position = i
                 break
         return position
@@ -71,9 +74,9 @@ class ClassData:
         :return: Name of the candidate
         """
         position = self.position(psnumber)
-        a = self.newfile.iloc[position]
-        a = a["Emp Name"]
-        return a
+        getposition = self.newfile.iloc[position]
+        getposition = getposition["Emp Name"]
+        return getposition
 
     def getmarksbyps(self, psnumber):
         """
@@ -81,14 +84,11 @@ class ClassData:
         :return: The list of the marks of specific person in all subjects
         """
         position = self.position(psnumber)
-        a = self.newfile.iloc[position]
-        mylist =[]
-        mylist.append(a["Marks_x"])
-        mylist.append(a["Marks_y"])
-        mylist.append(a["Marks"])
+        getpos = self.newfile.iloc[position]
+        mylist = [getpos["Marks_x"], getpos["Marks_y"], getpos["Marks"]]
         return mylist
 
-    def getmarksbypsSDLC(self, psnumber):
+    def getmarks_byps_sdlc(self, psnumber):
         """
         :param psnumber: The PS number of the person
         :return: The marks of the person in SDLC module
@@ -96,7 +96,7 @@ class ClassData:
         marks = self.getmarksbyps(psnumber)
         return marks[0]
 
-    def getmarksbypspython(self, psnumber):
+    def getmarks_byps_python(self, psnumber):
         """
         :param psnumber: The PS number of the person
         :return: The marks of the person in Python module
@@ -104,11 +104,10 @@ class ClassData:
         marks = self.getmarksbyps(psnumber)
         return marks[1]
 
-    def getmarksbypsMBSE(self, psnumber):
+    def getmarks_byps_mbse(self, psnumber):
         """
         :param psnumber: The PS number of the person
         :return:  The marks of the person in SDLC module
         """
         marks = self.getmarksbyps(psnumber)
         return marks[2]
-
